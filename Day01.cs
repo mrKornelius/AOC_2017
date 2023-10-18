@@ -1,5 +1,4 @@
 using AoCHelper;
-using System.Threading.Tasks;
 
 namespace AOC_2017;
 class Day01 : BaseDay
