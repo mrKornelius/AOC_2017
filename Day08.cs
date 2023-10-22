@@ -17,40 +17,44 @@ public class Day08 : BaseDay
         foreach (var line in _input.Split('\n'))
         {
             var exp = line.Split(' ');
-            if (!regs.ContainsKey(exp[0])) regs[exp[0]] = 0;
-            if (!regs.ContainsKey(exp[4])) regs[exp[4]] = 0;
+            string id_1 = exp[0];
+            string id_2 = exp[4];
+            if (!regs.ContainsKey(id_1)) regs[id_1] = 0;
+            if (!regs.ContainsKey(id_2)) regs[id_2] = 0;
             int val1 = int.Parse(exp[2]);
             int val2 = int.Parse(exp[^1]);
+            string comp = exp[^2];
+            string op = exp[1];
             bool doCalc = false;
 
-            switch (exp[^2])
+            switch (comp)
             {
                 case "==":
-                    doCalc = regs[exp[4]] == val2;
+                    doCalc = regs[id_2] == val2;
                     break;
                 case "!=":
-                    doCalc = regs[exp[4]] != val2;
+                    doCalc = regs[id_2] != val2;
                     break;
                 case "<":
-                    doCalc = regs[exp[4]] < val2;
+                    doCalc = regs[id_2] < val2;
                     break;
                 case "<=":
-                    doCalc = regs[exp[4]] <= val2;
+                    doCalc = regs[id_2] <= val2;
                     break;
                 case ">":
-                    doCalc = regs[exp[4]] > val2;
+                    doCalc = regs[id_2] > val2;
                     break;
                 case ">=":
-                    doCalc = regs[exp[4]] >= val2;
+                    doCalc = regs[id_2] >= val2;
                     break;
             }
 
             if (doCalc)
             {
-                if (exp[1] == "dec") regs[exp[0]] -= val1;
-                else regs[exp[0]] += val1;
+                if (op == "dec") regs[id_1] -= val1;
+                else regs[id_1] += val1;
 
-                if (regs[exp[0]] > maxValue) maxValue = regs[exp[0]];
+                if (regs[id_1] > maxValue) maxValue = regs[id_1];
             }
         }
         part2 = maxValue;
