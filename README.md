@@ -2,4 +2,4 @@
 
 [www.adventofcode.com](www.adventofcode.com)
 
-Solve some AOC problems while I learn C#.
+Solving some AOC problems while I learn C#.
