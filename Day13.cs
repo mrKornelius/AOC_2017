@@ -8,10 +8,6 @@ public class Day13 : BaseDay
     public Day13()
     {
         string input = File.ReadAllText(InputFilePath);
-        //         string input = @"0: 3
-        // 1: 2
-        // 4: 4
-        // 6: 4";
         foreach (string line in input.Split("\n"))
         {
             var xs = line.Split(": ").Select(int.Parse).ToArray();
@@ -26,7 +22,6 @@ public class Day13 : BaseDay
         {
             if (fw.ContainsKey(pico) && pico % ((fw[pico] - 1) * 2) == 0)
             {
-                // Console.WriteLine($"{pico} {fw[pico]} ");
                 severity += pico * fw[pico];
             }
         }
@@ -45,21 +40,13 @@ public class Day13 : BaseDay
                 if (fw.ContainsKey(pico) && (start + pico) % ((fw[pico] - 1) * 2) == 0)
                 {
                     caught = true;
-                    // Console.WriteLine($"{pico} {fw[pico]} ");
                     severity += pico * fw[pico];
                     if (caught && severity > 0) break;
                 }
             }
-            if (!caught) Console.WriteLine($"{start,5} -> {severity,5}{(severity == 0 ? " <-" : "")}");
-            // if (severity == 0)
-            if (!caught)
-            {
-                break;
-            }
+            if (!caught) break;
             start++;
-            caught = false;
         }
-        // 11596 wrong
         return new(start.ToString());
     }
 }
